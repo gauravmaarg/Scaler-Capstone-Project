@@ -1,14 +1,15 @@
 import React from "react";
-
 import VideoSlider from "../components/VideoSlider";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import avatar from "../assets/avatar.png";
+import logo from "../assets/logo-full.png";
 
 function HomeScreen() {
   return (
     <div>
-      <Header />
+      <Header logo={logo} avatar={avatar} username="Kumar Gaurav" />
       <Banner />
       <VideoSlider
         mediaType="tv"

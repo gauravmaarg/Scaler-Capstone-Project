@@ -1,3 +1,7 @@
+$text-color: grey;
+$menu-background: #232323;
+$hover-color: white;
+
 .header {
   position: fixed;
   top: 0;
@@ -23,5 +27,65 @@
   &__avatar {
     width: 30px;
     object-fit: contain;
+  }
+
+  &__avatar-container {
+    position: relative;
+
+    .header__avatar {
+      height: 30px;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid $hover-color;
+      }
+    }
+
+    .header__menu {
+      position: absolute;
+      top: 40px; 
+      right: 0;
+      background-color: $menu-background;
+      color: $text-color;
+      padding: 10px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent transparent $menu-background transparent;
+      }
+
+      .header__username {
+        margin: 0;
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+        margin-bottom: 10px;
+      }
+
+      .header__username__text {
+        display: flex;
+        justify-content: space-between;
+      }
+      .header__signout {
+        display: block;
+        text-decoration: none;
+        color: $text-color;
+        white-space: nowrap;
+        font-size: 14px;
+
+        &:hover {
+          color: $hover-color;
+        }
+      }
+    }
   }
 }
