@@ -11,20 +11,21 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
       setItems(json.results);
     };
     fetchData();
-  }, [params, path]);
+  }, []);
 
   return (
     <div className="video-slider">
       <h3 className="video-slider__title">{title}</h3>
       <div className="video-slider__cards">
-        {items.map((media) => (
-          <MediaCard
-            isLarge={isLarge}
-            key={media.id}
-            media={media}
-            mediaType={media.media_type || mediaType}
-          />
-        ))}
+        {items &&
+          items.map((media) => (
+            <MediaCard
+              isLarge={isLarge}
+              key={media.id}
+              media={media}
+              mediaType={media.media_type || mediaType}
+            />
+          ))}
       </div>
     </div>
   );
