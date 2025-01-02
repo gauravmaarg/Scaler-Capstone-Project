@@ -1,6 +1,6 @@
 import path from "path-browserify";
 
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
+const IMAGE_BASE_URL = process.env.REACT_APP_IMAGE_BASE_URL;
 
 export const ImageSizes = {
   poster: "w500",
