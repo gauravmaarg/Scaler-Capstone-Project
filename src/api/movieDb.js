@@ -11,4 +11,5 @@ const moviesApi = new Api({
   searchParams: { api_key: API_KEY },
 });
 console.log(moviesApi);
+console.log("API Base URL:", process.env.REACT_APP_API_BASE_URL);
 export default moviesApi;
