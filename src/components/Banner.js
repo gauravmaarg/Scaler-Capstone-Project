@@ -7,7 +7,7 @@ function Banner() {
 
   useEffect(() => {
     const fetchBannerMovie = async () => {
-      const json = await movieDb.get(
+      const json = await fetch(
         "https:/api.themoviedb.org/3/discover/tv?api_key=f5aa27e0c3a00d3316fea9e17baf5ae7&with_networks=213",
         { with_networks: 213 }
       );
