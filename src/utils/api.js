@@ -9,9 +9,7 @@ class Api {
 
   async get(endpoint, params) {
     const hitUrl = this._generateUrl(endpoint, params);
-    const response = await fetch(hitUrl, {
-      method: "GET",
-    });
+    const response = await fetch(hitUrl);
 
     return this._parseJsonResponse(response);
   }
