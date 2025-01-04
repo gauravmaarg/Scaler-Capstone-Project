@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from "react";
-import moviesApi from "../api/movieDb";
+import { axiosInstance } from "../api/movieDb";
+import apikey from "../apiKey.json";
 
 function TrailerModal({ mediaType, mediaId, onClose }) {
   const [videoId, setVideoId] = useState(null);
+  const API_KEY = apikey.MoviesDB_API_KEY;
+
+  const getVideoTrailer = async () => {
+    return axiosInstance.get(`/${mediaType}/${mediaId}/videos`, {
+      params: {
+        api_key: API_KEY,
+      },
+    });
+  };
 
   useEffect(() => {
     async function fetchTrailer() {
-      const json = await moviesApi.get(`/${mediaType}/${mediaId}/videos`);
-      const video = json.results.find((o) => o.site === "YouTube");
+      const videoData = await getVideoTrailer();
+      const video = videoData.data.results.find((o) => o.site === "YouTube");
       setVideoId(video?.key);
     }
     fetchTrailer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mediaId, mediaType]);
 
   return (
