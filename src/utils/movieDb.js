@@ -13,7 +13,10 @@ export const ImageSizes = {
 // }
 
 export function generateImageUrl(imagePath, size) {
-  return `${IMAGE_BASE_URL}/${size}/${imagePath}`.replace(/\/+/g, "/"); // Normalize slashes
+  // return `${IMAGE_BASE_URL}/${size}/${imagePath}`.replace(/\/+/g, "/");
+  return `${IMAGE_BASE_URL}/${size}/${imagePath}`
+    .replace(/\/+/g, "/")
+    .replace(":/", "://");
 }
 
 export function filterPreferredResults(results) {
