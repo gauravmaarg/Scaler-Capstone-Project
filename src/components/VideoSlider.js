@@ -8,7 +8,7 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
   useEffect(() => {
     const fetchData = async () => {
       const json = await moviesApi.get(path, params);
-      setItems(json.results);
+      json && setItems(json.results);
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
