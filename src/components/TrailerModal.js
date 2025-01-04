@@ -1,22 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { axiosInstance } from "../api/movieDb";
-import apikey from "../apiKey.json";
+import { getVideoTrailer } from "../utils/movieDb";
 
 function TrailerModal({ mediaType, mediaId, onClose }) {
   const [videoId, setVideoId] = useState(null);
-  const API_KEY = apikey.MoviesDB_API_KEY;
-
-  const getVideoTrailer = async () => {
-    return axiosInstance.get(`/${mediaType}/${mediaId}/videos`, {
-      params: {
-        api_key: API_KEY,
-      },
-    });
-  };
 
   useEffect(() => {
     async function fetchTrailer() {
-      const videoData = await getVideoTrailer();
+      const videoData = await getVideoTrailer(mediaType, mediaId);
       const video = videoData.data.results.find((o) => o.site === "YouTube");
       setVideoId(video?.key);
     }

@@ -1,4 +1,4 @@
-import { axiosInstance } from "../api/movieDb";
+import { axiosInstance } from "../api/apiConfig";
 import apikey from "../apiKey.json";
 
 const IMAGE_BASE_URL = process.env.REACT_APP_IMAGE_BASE_URL;
@@ -19,11 +19,28 @@ export function generateImageUrl(imagePath, size) {
 export function filterPreferredResults(results) {
   return results.filter((o) => ["movie", "tv"].includes(o.media_type));
 }
-export const getBannerData = async () => {
-  return axiosInstance.get(`/discover/tv`, {
+export const getBannerData = async (path) => {
+  return axiosInstance.get(path, {
     params: {
       api_key: API_KEY,
       with_networks: 213,
+    },
+  });
+};
+
+export const getVideoData = async (path) => {
+  return axiosInstance.get(path, {
+    params: {
+      api_key: API_KEY,
+      with_networks: 213,
+    },
+  });
+};
+
+export const getVideoTrailer = async (mediaType, mediaId) => {
+  return axiosInstance.get(`/${mediaType}/${mediaId}/videos`, {
+    params: {
+      api_key: API_KEY,
     },
   });
 };

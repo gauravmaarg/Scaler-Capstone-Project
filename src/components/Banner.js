@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { generateImageUrl, ImageSizes, getBannerData } from "../utils/movieDb";
-// import { axiosInstance } from "../api/movieDb";
-// import apikey from "../apiKey.json";
 
 function Banner() {
   const [movie, setMovie] = useState({});
-  // const API_KEY = apikey.MoviesDB_API_KEY;
 
-  // const getBannerData = async () => {
-  //   return axiosInstance.get(`/discover/tv`, {
-  //     params: {
-  //       api_key: API_KEY,
-  //       with_networks: 213,
-  //     },
-  //   });
-  // };
   useEffect(() => {
     const fetchBannerMovie = async () => {
-      const videoData = await getBannerData();
+      const videoData = await getBannerData(`/discover/tv`);
       setMovie(
         videoData.data.results[
           Math.floor(Math.random() * videoData.data.results.length - 1)
