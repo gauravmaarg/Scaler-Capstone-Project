@@ -22,6 +22,7 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
       setItems(videoData.data.results);
     };
     fetchVideoData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
