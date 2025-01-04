@@ -9,28 +9,39 @@ class Api {
 
   async get(endpoint, params) {
     const hitUrl = this._generateUrl(endpoint, params);
-    const response = await fetch(hitUrl);
+    // const response = await fetch(hitUrl);
 
-    return this._parseJsonResponse(response);
+    fetch(hitUrl)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+      })
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error fetching data:", error));
+
+    // return this._parseJsonResponse(response);
   }
 
-  async _parseJsonResponse(response) {
-    let json = null;
-    try {
-      json = await response.json();
-    } catch (e) {}
+  // async _parseJsonResponse(response) {
+  //   let json = null;
+  //   try {
+  //     json = await response.json();
+  //   } catch (e) {}
 
-    if (response.ok) {
-      return json;
-    } else {
-      const error = new Error(response.statusText);
-      error.isFromServer = true;
-      error.response = response;
-      error.responseJson = json;
+  //   if (response.ok) {
+  //     return json;
+  //   } else {
+  //     const error = new Error(response.statusText);
+  //     error.isFromServer = true;
+  //     error.response = response;
+  //     error.responseJson = json;
 
-      throw error;
-    }
-  }
+  //     throw error;
+  //   }
+  // }
 
   _generateUrl(endpoint, params) {
     debugger;
