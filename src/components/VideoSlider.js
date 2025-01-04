@@ -7,13 +7,18 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const json = await moviesApi.get(path, params);
-      json && setItems(json.results);
+      // const json = await moviesApi.get(path, params);
+      // json && setItems(json.results);
+      moviesApi
+        .get(path, params)
+        .then((data) => {
+          setItems(data.results);
+        })
+        .catch((err) => console.error("Error:", err));
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className="video-slider">
       <h3 className="video-slider__title">{title}</h3>

@@ -8,12 +8,10 @@ class Api {
   }
 
   async get(endpoint, params) {
-    const hitUrl = this._generateUrl(endpoint, params);
-    const response = await fetch(hitUrl, {
+    const constructedUrl = this._generateUrl(endpoint, params);
+    const response = await fetch(constructedUrl, {
       method: "GET",
-      type: "CORS",
     });
-
     return this._parseJsonResponse(response);
   }
 
@@ -30,13 +28,11 @@ class Api {
       error.isFromServer = true;
       error.response = response;
       error.responseJson = json;
-
       throw error;
     }
   }
 
   _generateUrl(endpoint, params) {
-    debugger;
     const search = qs.stringify({ ...this._baseSearchParams, ...params });
     const url = path.join(this._baseUrl, endpoint);
     return [url, search].join("?");
