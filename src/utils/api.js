@@ -35,6 +35,7 @@ class Api {
   }
 
   _generateUrl(endpoint, params) {
+    debugger;
     const search = qs.stringify({ ...this._baseSearchParams, ...params });
     const url = path.join(this._baseUrl, endpoint);
     return [url, search].join("?");

@@ -11,7 +11,8 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
       setItems(json.results);
     };
     fetchData();
-  }, [params, path]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="video-slider">
