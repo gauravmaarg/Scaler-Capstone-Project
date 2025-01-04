@@ -11,7 +11,7 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
       setItems(json.results);
     };
     fetchData();
-  }, []);
+  }, [params, path]);
 
   return (
     <div className="video-slider">
