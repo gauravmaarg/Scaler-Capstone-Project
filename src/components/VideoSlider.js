@@ -7,8 +7,6 @@ function VideoSlider({ mediaType, title, path, params = {}, isLarge }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const json = await moviesApi.get(path, params);
-      // json && setItems(json.results);
       moviesApi
         .get(path, params)
         .then((data) => {
