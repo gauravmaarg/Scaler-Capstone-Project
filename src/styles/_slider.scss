@@ -1,13 +1,13 @@
-.video-slider {
+.slider {
   color: white;
   padding-top: 30px;
 
-  &__title {
+  &_title {
     margin-top: 0;
     padding: 0 20px;
   }
 
-  &__cards {
+  &_cards {
     display: flex;
     overflow-x: scroll;
     padding: 10px;

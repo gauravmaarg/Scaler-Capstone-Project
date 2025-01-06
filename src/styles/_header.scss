@@ -18,18 +18,18 @@ $hover-color: white;
     background-color: rgba(0, 0, 0, 0.8);
   }
 
-  &__logo {
+  &_logo {
     margin-top: -5px;
     height: 40px;
     object-fit: contain;
   }
 
-  &__avatar {
+  &_avatar {
     width: 30px;
     object-fit: contain;
   }
 
-  &__avatar-container {
+  &_avatar-container {
     position: relative;
 
     .header__avatar {
@@ -63,7 +63,7 @@ $hover-color: white;
         border-color: transparent transparent $menu-background transparent;
       }
 
-      .header__username {
+      .header_username {
         margin: 0;
         font-size: 14px;
         font-weight: bold;
@@ -71,11 +71,11 @@ $hover-color: white;
         margin-bottom: 10px;
       }
 
-      .header__username__text {
+      .header_username_text {
         display: flex;
         justify-content: space-between;
       }
-      .header__signout {
+      .header_signout {
         display: block;
         text-decoration: none;
         color: $text-color;

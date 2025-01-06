@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import MediaCard from "./MediaCard";
+import { MediaCard } from "./MediaCard";
 import { getVideoData } from "../utils/movieDb";
 
-function VideoSlider({ mediaType, title, path, isLarge }) {
+export const Slider = ({ mediaType, title, path, isLarge }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ function VideoSlider({ mediaType, title, path, isLarge }) {
   }, []);
 
   return (
-    <div className="video-slider">
-      <h3 className="video-slider__title">{title}</h3>
-      <div className="video-slider__cards">
+    <div className="slider">
+      <h3 className="slider_title">{title}</h3>
+      <div className="slider_cards">
         {items &&
           items.map((media) => (
             <MediaCard
@@ -30,6 +30,4 @@ function VideoSlider({ mediaType, title, path, isLarge }) {
       </div>
     </div>
   );
-}
-
-export default VideoSlider;
+};

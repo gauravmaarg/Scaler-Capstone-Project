@@ -13,7 +13,7 @@
     }
   }
 
-  &__poster {
+  &_poster {
     flex: 0 0 auto;
     object-fit: cover;
     width: auto;
@@ -26,7 +26,7 @@
     }
   }
 
-  &__cover {
+  &_cover {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -45,12 +45,12 @@
     }
   }
 
-  &__name {
+  &_name {
     font-weight: bold;
     margin-bottom: 5px;
   }
 
-  &__description {
+  &_description {
     font-size: 10px;
     display: -webkit-box;
     -webkit-line-clamp: 2;

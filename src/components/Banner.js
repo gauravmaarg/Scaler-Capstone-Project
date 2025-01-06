@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { generateImageUrl, ImageSizes, getBannerData } from "../utils/movieDb";
 
-function Banner() {
+export const Banner = () => {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
@@ -27,19 +27,17 @@ function Banner() {
         )})`,
       }}
     >
-      <div className="banner__contents">
-        <h1 className="banner__title">
+      <div className="banner_contents">
+        <h1 className="banner_title">
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
-        <div className="banner__buttons">
-          <button className="banner__button">Play</button>
-          <button className="banner__button">My List</button>
+        <div className="banner_buttons">
+          <button className="banner_button">Play</button>
+          <button className="banner_button">My List</button>
         </div>
-        <h1 className="banner__description">{movie?.overview}</h1>
+        <h1 className="banner_description">{movie?.overview}</h1>
       </div>
-      <div className="banner__cover" />
+      <div className="banner_cover" />
     </div>
   );
-}
-
-export default Banner;
+};

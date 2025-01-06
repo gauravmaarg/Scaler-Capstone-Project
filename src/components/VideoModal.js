@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { getVideoTrailer } from "../utils/movieDb";
 
-function TrailerModal({ mediaType, mediaId, onClose }) {
+export const VideoModal = ({ mediaType, mediaId, onClose }) => {
   const [videoId, setVideoId] = useState(null);
 
   useEffect(() => {
-    async function fetchTrailer() {
+    async function fetchVideo() {
       const videoData = await getVideoTrailer(mediaType, mediaId);
       const video = videoData.data.results.find((o) => o.site === "YouTube");
       setVideoId(video?.key);
     }
-    fetchTrailer();
+    fetchVideo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mediaId, mediaType]);
 
   return (
     <>
-      <div className="trailer-modal-backdrop" onClick={onClose} />
-      <div className="trailer-modal">
+      <div className="video-modal-backdrop" onClick={onClose} />
+      <div className="video-modal">
         {videoId && (
           <iframe
             width="100%"
@@ -29,12 +29,10 @@ function TrailerModal({ mediaType, mediaId, onClose }) {
             allowFullScreen
           />
         )}
-        <button className="trailer-modal__close" onClick={onClose}>
+        <button className="video-modal_close" onClick={onClose}>
           ✕
         </button>
       </div>
     </>
   );
-}
-
-export default TrailerModal;
+};

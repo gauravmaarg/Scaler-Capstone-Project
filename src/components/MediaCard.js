@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { VideoModal } from "./VideoModal";
 import { generateImageUrl, ImageSizes } from "../utils/movieDb";
-import TrailerModal from "./TrailerModal";
 
-function MediaCard({ media, mediaType, isLarge }) {
+export const MediaCard = ({ media, mediaType, isLarge }) => {
   const [isTrailerOpen, setTrailerOpen] = useState(false);
 
   return (
@@ -14,8 +14,8 @@ function MediaCard({ media, mediaType, isLarge }) {
         onClick={() => setTrailerOpen(true)}
       >
         <img
-          className={classNames("media-card__poster", {
-            "media-card__poster--large": isLarge,
+          className={classNames("media-card_poster", {
+            "media-card_poster--large": isLarge,
           })}
           src={
             isLarge
@@ -24,15 +24,15 @@ function MediaCard({ media, mediaType, isLarge }) {
           }
           alt={media.original_title}
         />
-        <div className="media-card__cover">
-          <div className="media-card__name">
+        <div className="media-card_cover">
+          <div className="media-card_name">
             {media.title || media.name || media.original_name}
           </div>
-          <div className="media-card__description">{media.overview}</div>
+          <div className="media-card_description">{media.overview}</div>
         </div>
       </div>
       {isTrailerOpen && (
-        <TrailerModal
+        <VideoModal
           mediaType={mediaType}
           mediaId={media.id}
           media={media}
@@ -41,6 +41,4 @@ function MediaCard({ media, mediaType, isLarge }) {
       )}
     </>
   );
-}
-
-export default MediaCard;
+};
